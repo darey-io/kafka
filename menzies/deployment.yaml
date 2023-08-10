@@ -3,19 +3,19 @@ kind: Deployment
 metadata:
   name: dotnetapp
   labels:
-    app: strimzi
+    app: clarity-cloud
 spec:
-  replicas: 1
+  replicas: 3
   selector:
     matchLabels:
-      name: dotnetapp
+      name: clarity-cloud
   template:
     metadata:
       labels:
-        name: dotnetapp
+        name: clarity-cloud
     spec:
       containers:
-        - name: dotnetapp
+        - name: clarity-cloud-dotnetapp
           image: dareyregistry/menzies
           env:
             - name: KAFKA_BOOTSTRAP_SERVERS
