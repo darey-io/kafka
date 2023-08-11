@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
         - name: clarity-cloud-dotnetapp
-          image: dareyregistry/menzies
+          image: dareyregistry/dotnetapp:latest
           env:
             - name: KAFKA_BOOTSTRAP_SERVERS
               value: my-cluster-kafka-bootstrap:9092
