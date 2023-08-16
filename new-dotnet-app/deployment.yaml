@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetapp
+  labels:
+    app: clarity-cloud
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      name: clarity-cloud
+  template:
+    metadata:
+      labels:
+        name: clarity-cloud
+    spec:
+      containers:
+        - name: clarity-cloud-dotnetapp
+          image: dareyregistry/dotnetapp:latest
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: my-cluster-kafka-bootstrap:9092
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: 500m
+            requests:
+              memory: 256Mi
+              cpu: 100m
+  strategy:
+    type: Recreate
