@@ -1,0 +1,21 @@
+
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: dotnet-ingress
+spec:
+  defaultBackend:
+    service:
+      name: nginx-service
+      port:
+        number: 80
+  rules:
+  - http:
+      paths:
+      - path: /dotnet
+        pathType: ImplementationSpecific
+        backend:
+          service:
+            name: dotnetapp-service
+            port:
+              number: 80
