@@ -8,11 +8,11 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      name: clarity-cloud
+      app: clarity-cloud
   template:
     metadata:
       labels:
-        name: clarity-cloud
+        app: clarity-cloud
     spec:
       containers:
         - name: clarity-cloud-dotnetapp
@@ -29,7 +29,6 @@ spec:
               cpu: 100m
   strategy:
     type: Recreate
-
 ---
 
 apiVersion: apps/v1
@@ -55,3 +54,4 @@ spec:
             cpu: "500m"
         ports:
         - containerPort: 80
+        
