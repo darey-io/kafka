@@ -4,7 +4,7 @@ metadata:
   name: dotnetapp-service
 spec:
   selector:
-    name: clarity-cloud
+    app: clarity-cloud
   ports:
     - protocol: TCP
       port: 80

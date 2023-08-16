@@ -8,11 +8,11 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      name: clarity-cloud
+      app: clarity-cloud
   template:
     metadata:
       labels:
-        name: clarity-cloud
+        app: clarity-cloud
     spec:
       containers:
         - name: clarity-cloud-dotnetapp
