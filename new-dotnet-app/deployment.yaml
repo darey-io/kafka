@@ -8,11 +8,11 @@ spec:
   replicas: 3
   selector:
     matchLabels:
-      app: clarity-cloud
+      name: clarity-cloud
   template:
     metadata:
       labels:
-        app: clarity-cloud
+        name: clarity-cloud
     spec:
       containers:
         - name: clarity-cloud-dotnetapp
@@ -29,6 +29,7 @@ spec:
               cpu: 100m
   strategy:
     type: Recreate
+
 ---
 
 apiVersion: apps/v1
@@ -36,6 +37,7 @@ kind: Deployment
 metadata:
   name: nginx
 spec:
+  replicas: 3
   selector:
     matchLabels:
       app: nginx
