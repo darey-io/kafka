@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dotnetapp
+  labels:
+    app: clarity-cloud
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: clarity-cloud
+  template:
+    metadata:
+      labels:
+        app: clarity-cloud
+    spec:
+      containers:
+        - name: clarity-cloud-dotnetapp
+          image: dareyregistry/dotnetapp:dev
+          env:
+            - name: KAFKA_BOOTSTRAP_SERVERS
+              value: my-cluster-kafka-bootstrap:9092
+          resources:
+            limits:
+              memory: 256Mi
+              cpu: 500m
+            requests:
+              memory: 256Mi
+              cpu: 100m
+  strategy:
+    type: Recreate
+---
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: nginx
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: nginx
+  template:
+    metadata:
+      labels:
+        app: nginx
+    spec:
+      containers:
+      - name: nginx
+        image: nginx
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "500m"
+        ports:
+        - containerPort: 80
+        
